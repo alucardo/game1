@@ -17,7 +17,7 @@ public class Engine {
 
     void startGame() {
         initGame();
-        aiOn = gameGui.askAboutVersion();
+        aiOn = gameGui.askAboutVersion(); // show modal that ask if this is pvp or pvc
         while (continueGame()) {
             gameGui.drawBoard();
             if(aiOn == 1 || player == 1) {
@@ -30,7 +30,7 @@ public class Engine {
                 }
                 gameBoard.setBoardElement(x, y, player);
             } else {
-                gameGui.aiMove();
+                gameGui.aiMove(); // show info that it's computer move
                 Ai.getMove(gameBoard);
             }
             changeUser();
