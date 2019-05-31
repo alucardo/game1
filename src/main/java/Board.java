@@ -32,4 +32,33 @@ public class Board {
         return isThereMove;
     }
 
+
+    boolean checkWinner() {
+
+        return checkVerticalLine() || checkHorizontalLine() || checkCrosLine();
+    }
+
+    boolean checkHorizontalLine() {
+        boolean result = false;
+        result = result || ( ticTacToeBoard[0][0] == ticTacToeBoard[0][1] && ticTacToeBoard[0][0] == ticTacToeBoard[0][2] && ticTacToeBoard[0][0] != 0);
+        result = result || ( ticTacToeBoard[1][0] == ticTacToeBoard[1][1] && ticTacToeBoard[1][0] == ticTacToeBoard[1][2] && ticTacToeBoard[1][0] != 0);
+        result = result || ( ticTacToeBoard[2][0] == ticTacToeBoard[2][1] && ticTacToeBoard[2][0] == ticTacToeBoard[0][2] && ticTacToeBoard[2][0] != 0);
+        return result;
+    }
+
+    boolean checkVerticalLine() {
+        boolean result = false;
+        result = result || ( ticTacToeBoard[0][0] == ticTacToeBoard[1][0] && ticTacToeBoard[0][0] == ticTacToeBoard[2][0] && ticTacToeBoard[0][0] != 0);
+        result = result || ( ticTacToeBoard[0][1] == ticTacToeBoard[1][1] && ticTacToeBoard[0][1] == ticTacToeBoard[2][1] && ticTacToeBoard[0][1] != 0);
+        result = result || ( ticTacToeBoard[0][2] == ticTacToeBoard[1][2] && ticTacToeBoard[0][2] == ticTacToeBoard[2][2] && ticTacToeBoard[0][2] != 0);
+        return result;
+    }
+
+    boolean checkCrosLine() {
+        boolean result = false;
+        result = result || ( ticTacToeBoard[0][0] == ticTacToeBoard[1][1] && ticTacToeBoard[0][0] == ticTacToeBoard[2][2] && ticTacToeBoard[0][0] != 0);
+        result = result || ( ticTacToeBoard[0][2] == ticTacToeBoard[1][1] && ticTacToeBoard[0][2] == ticTacToeBoard[2][0] && ticTacToeBoard[0][2] != 0);
+        return result;
+    }
+
 }

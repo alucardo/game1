@@ -58,5 +58,14 @@ public class TextGui implements Gui {
     public void aiMove() {
         System.out.println("Ruch komputera");
     }
+    public void wrongMove() {
+        System.out.println("Podane pole jest nie prawidłowe");
+    }
+
+    public void endGame() {
+        System.out.println("Koniec gry. Dziękuje :)");
+    }
+
+
 
 }

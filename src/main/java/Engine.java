@@ -17,7 +17,6 @@ public class Engine {
 
     void startGame() {
         initGame();
-        System.out.println("Start gry");
         aiOn = gameGui.askAboutVersion();
         while (continueGame()) {
             gameGui.drawBoard();
@@ -26,7 +25,7 @@ public class Engine {
                 getUserMove();
                 // check user move and if it return wrong move (false) ask one more time
                 while (!checkUserMove()) {
-                    System.out.println("Podane pole jest nie prawidłowe");
+                    gameGui.wrongMove();
                     getUserMove();
                 }
                 gameBoard.setBoardElement(x, y, player);
@@ -36,7 +35,7 @@ public class Engine {
             }
             changeUser();
         }
-        System.out.println("Koniec gry");
+        gameGui.endGame();
     }
 
     void getUserMove() {
@@ -49,7 +48,9 @@ public class Engine {
     }
 
     Boolean continueGame() {
-        return gameBoard.checkIfThereIsNextMove();
+        // gameBoard.checkWinner() => return true if there is a winner
+        // ! changes true to false and false to true
+        return gameBoard.checkIfThereIsNextMove() && !gameBoard.checkWinner();
     }
 
     void changeUser() {
